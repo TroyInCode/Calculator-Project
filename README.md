@@ -1,5 +1,3 @@
-# README
-
 ## Overview
 <p> This project is intended to demonstrate what can be done with a combination of HTML, CSS, and JavaScript DOM manipulation. This calculator uses event-listeners and various functions to create a basic calculator that performs many different calculations.
 
@@ -15,5 +13,3 @@ If you would like to clone the project to see how it works:
 git clone https://github.com/TroyInCode/Calculator-Project.git
 
 ```
-# Aknowledgements
-Thank you to Project Odin
