@@ -1,0 +1,17 @@
+.main-calc {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 200px;
+    height: 200px;
+}
+/*Buttons in the first row*/
+
+.calc-keys {
+    display: flex;
+    flex-direction: row;
+}
+
+.calc-keys button {
+    width: 80%;
+}
