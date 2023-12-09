@@ -58,6 +58,9 @@ numberButtons.forEach(button => {
 const clearNumbers = () => {
 clearButton.addEventListener("click", () => {
     displayScreen.innerHTML = "";
+    firstNumber = undefined;
+    operator = undefined;
+    secondNumber = undefined;
 })
 };
 
@@ -70,8 +73,22 @@ const setOperator = (op) => {
     }
 };
 
+const calculateNumbers = () => {
+    const equalsButton = document.getElementById("=");
+
+    equalsButton.addEventListener("click", () => {
+        if (operator && firstNumber !== undefined) {
+            secondNumber = parseFloat(displayScreen.innerHTML);
+            const result = operate(firstNumber, secondNumber, operator);
+            displayScreen.innerHTML = result;
+            firstNumber = result;
+            operator = undefined;
+            secondNumber = undefined;
+        }
+    })
+}
 
 
-//Call Display Function & Clear Display
+//Call Display Function, Clear Display, and Perform Operations//
 displayNumbers();
 clearNumbers();
