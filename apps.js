@@ -48,16 +48,29 @@ const displayNumbers = () => {
 numberButtons.forEach(button => {
     button.addEventListener("click", () => {
         displayScreen.innerHTML += button.innerText;
+        const firstDisplayedNumber = displayScreen.innerHTML;
     })
 })
+
 };
 
-//Clear Display
+//Clear Display when "Clear" is Clicked"
 const clearNumbers = () => {
 clearButton.addEventListener("click", () => {
     displayScreen.innerHTML = "";
 })
 };
+
+
+const setOperator = (op) => {
+    operator = op;
+    if (firstNumber === undefined) {
+        firstNumber = parseFloat(displayScreen.innerHTML);
+        displayScreen.innerHTML="";
+    }
+};
+
+
 
 //Call Display Function & Clear Display
 displayNumbers();
