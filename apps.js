@@ -19,6 +19,8 @@ const divide = (a, b) => {
 let firstNumber;
 let operator;
 let secondNumber;
+const operatorButtons = document.querySelectorAll(".op-button");
+const equalsButton = document.getElementById("=");
 
 //Global Variables for Calculator
 
@@ -42,24 +44,32 @@ const operate = (firstNumber, secondNumber, operator) => {
     };
 };
 
-const setOperator = (op) => {
-    operator = op;
-    if (firstNumber === undefined) {
-        firstNumber = parseFloat(displayScreen.innerHTML);
-        displayScreen.innerHTML="";
-    }
+//Set Operator and Store Displayed Number
+
+const setOperator = () => {
+    operatorButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            operator = button.id;
+            firstNumber = parseFloat(currentInput); //Convert string to floating point number
+            currentInput = "";
+        })
+    })
 };
+
+
 
 //Display Numbers when Clicked
 
 const displayNumbers = () => {
 numberButtons.forEach(button => {
     button.addEventListener("click", () => {
-        displayScreen.innerHTML += button.innerText;
+        currentInput += button.innerText;
+        displayScreen.innerHTML = currentInput;
     })
 })
 
 };
+
 
 //Clear Display when "Clear" is Clicked"
 const clearNumbers = () => {
@@ -71,24 +81,10 @@ clearButton.addEventListener("click", () => {
 })
 };
 
-//Perform Operations
-const calculateNumbers = () => {
-    const equalsButton = document.getElementById("=");
 
-    equalsButton.addEventListener("click", () => {
-        if (operator && firstNumber !== undefined) {
-            secondNumber = parseFloat(displayScreen.innerHTML);
-            const result = operate(firstNumber, secondNumber, operator)
-            displayScreen.innerHTML = result;
-            firstNumber = result;
-            operator = undefined;
-            secondNumber = undefined;
-        }
-    })
-};
 
 
 //Call Display Function, Clear Display, and Perform Operations//
 displayNumbers();
 clearNumbers();
-calculateNumbers();
+setOperator();
