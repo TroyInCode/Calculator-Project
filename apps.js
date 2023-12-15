@@ -16,9 +16,9 @@ const divide = (a, b) => {
 }
 
 //Variables for Calculator Operation
-let firstNumber;
-let operator;
-let secondNumber;
+let firstNumber = undefined;
+let operator = undefined;
+let secondNumber = undefined;
 const operatorButtons = document.querySelectorAll(".op-button");
 const equalsButton = document.getElementById("=");
 
@@ -44,31 +44,30 @@ const operate = (firstNumber, secondNumber, operator) => {
     };
 };
 
-//Set Operator and Store Displayed Number
-
-const setOperator = () => {
-    operatorButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            operator = button.id;
-            firstNumber = parseFloat(currentInput); //Convert string to floating point number
-            currentInput = "";
-        })
-    })
-};
-
-
-
 //Display Numbers when Clicked
 
 const displayNumbers = () => {
-numberButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        currentInput += button.innerText;
-        displayScreen.innerHTML = currentInput;
+    numberButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            displayScreen.innerHTML += button.innerHTML;
+        })
     })
-})
+    
+    };
+    
 
-};
+//Set Operator and Store Displayed Number
+const setOperator = () => {
+    operatorButtons.forEach(button => {
+        button.addEventListener("click", () => {
+        firstNumber = parseFloat(displayScreen.innerHTML);
+        displayScreen.innerHTML = button.id;
+
+        })
+    })
+}
+
+
 
 
 //Clear Display when "Clear" is Clicked"
@@ -80,6 +79,9 @@ clearButton.addEventListener("click", () => {
     secondNumber = undefined;
 })
 };
+
+
+
 
 
 
