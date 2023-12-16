@@ -70,7 +70,7 @@ const setOperator = () => {
             displayScreen.innerText += op.innerText;
             if (e.target.innerText !==  "="){
                 operator = e.target.innerText;
-                console.log(operator);
+                console.log(`Operator is: ${operator}`);
                 //Press Equals Button and Perform Operation on Displayed Numbers
             } else {
                 let result = operate(firstNumber, secondNumber, operator);
@@ -81,6 +81,7 @@ const setOperator = () => {
                 firstNumber = result.toString();
                 operator = "";
                 secondNumber = "";
+                console.log(`New First Number is: ${firstNumber}`)
             }
             ;
         })
