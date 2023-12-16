@@ -57,7 +57,11 @@ const displayNumbers = () => {
                 secondNumber += parseFloat(e.target.innerText);
                 console.log(`Second Number is : ${secondNumber}`);
             }
-        
+            
+            if (!operator === "") {
+                secondNumber = parseFloat(e.target.innerText);
+                console.log(`New Number is: ${secondNumber}`);
+            }
         })
     })
     
