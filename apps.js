@@ -16,9 +16,9 @@ const divide = (a, b) => {
 }
 
 //Variables for Calculator Operation
-let firstNumber = undefined;
-let operator = undefined;
-let secondNumber = undefined;
+let firstNumber;
+let operator;
+let secondNumber;
 const operatorButtons = document.querySelectorAll(".op-button");
 const equalsButton = document.getElementById("=");
 
@@ -48,8 +48,15 @@ const operate = (firstNumber, secondNumber, operator) => {
 
 const displayNumbers = () => {
     numberButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            displayScreen.innerHTML += button.innerHTML;
+        button.addEventListener("click", (e) => {
+            displayScreen.innerText += button.innerText;
+            if (operator === "") {  //Read first number if no operator set yet
+                firstNumber += e.target.innerText;
+                console.log(firstNumber);
+            } else { // Read Second Number
+                secondNumber += e.target.innerText;
+                console.log(secondNumber);
+            }
         })
     })
     
@@ -58,16 +65,19 @@ const displayNumbers = () => {
 
 //Set Operator and Store Displayed Number
 const setOperator = () => {
-    operatorButtons.forEach(button => {
-        button.addEventListener("click", () => {
-        firstNumber = parseFloat(displayScreen.innerHTML);
-        displayScreen.innerHTML = button.id;
-
+    operatorButtons.forEach(op => {
+        op.addEventListener("click", (e) => {
+            if (e.target.innerText !==  "="){
+                operator = e.target.innerText;
+            }
+            console.log(secondNumber);
         })
     })
 }
-
-
+//Press Equals Button and Perform Operation on Displayed Numbers
+const pressEquals = () => {
+ 
+}
 
 
 //Clear Display when "Clear" is Clicked"
