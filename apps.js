@@ -51,17 +51,18 @@ const displayNumbers = () => {
         button.addEventListener("click", (e) => {
             displayScreen.innerText += button.innerText;
             if (operator === "") {  //Read first number if no operator set yet
-                firstNumber += e.target.innerText;
+                firstNumber += parseFloat(e.target.innerText);
                 console.log(`First Number is: ${firstNumber}`);
             } else { // Read Second Number
-                secondNumber += e.target.innerText;
+                secondNumber += parseFloat(e.target.innerText);
                 console.log(`Second Number is : ${secondNumber}`);
             }
+        
         })
     })
     
     };
-    
+
 
 //Set Operator and Store Displayed Number
 const setOperator = () => {
@@ -73,21 +74,25 @@ const setOperator = () => {
                 console.log(`Operator is: ${operator}`);
                 //Press Equals Button and Perform Operation on Displayed Numbers
             } else {
-                let result = operate(firstNumber, secondNumber, operator);
-                displayScreen.innerText = result;
-                console.log(result);
-                
-                //Reset firstNumber to the result for further calculations
-                firstNumber = result.toString();
-                operator = "";
-                secondNumber = "";
-                console.log(`New First Number is: ${firstNumber}`)
+               pressEqualsButton();
             }
             ;
         })
     })
 }
 
+//Equals Button is Pressed & Operation is Performed
+const pressEqualsButton = () => {
+    let result = operate(firstNumber, secondNumber, operator);
+    displayScreen.innerText = result;
+    console.log(result);
+    
+    //Reset firstNumber to the result for further calculations
+    firstNumber = result.toString();
+    operator = "";
+    secondNumber = "";
+    console.log(`New First Number is: ${firstNumber}`);
+};
 
 
 //Clear Display when "Clear" is Clicked"
