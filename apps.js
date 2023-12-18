@@ -51,17 +51,14 @@ const displayNumbers = () => {
         button.addEventListener("click", (e) => {
             displayScreen.innerText += button.innerText;
             if (operator === "") {  //Read first number if no operator set yet
-                firstNumber += parseFloat(e.target.innerText);
+                firstNumber += e.target.innerText;
                 console.log(`First Number is: ${firstNumber}`);
-            } else { // Read Second Number
-                secondNumber += parseFloat(e.target.innerText);
+             //Read Second Number   
+            } else {
+                secondNumber += e.target.innerText;
                 console.log(`Second Number is : ${secondNumber}`);
             }
-            
-            if (!operator === "") {
-                secondNumber = parseFloat(e.target.innerText);
-                console.log(`New Number is: ${secondNumber}`);
-            }
+
         })
     })
     
@@ -76,14 +73,24 @@ const setOperator = () => {
             if (e.target.innerText !==  "="){
                 operator = e.target.innerText;
                 console.log(`Operator is: ${operator}`);
+
                 //Press Equals Button and Perform Operation on Displayed Numbers
             } else {
                pressEqualsButton();
             }
-            ;
+
+            if (secondNumber !== "") {
+                let result = operate(firstNumber, secondNumber, operator);
+                firstNumber = parseFloat(result);
+                secondNumber = "";
+                displayScreen.innerText = firstNumber + op.innerText;
+
+                console.log(`New First Number is: ${firstNumber}`);
+                console.log(`New Second Number is : ${secondNumber}`);
+            }
         })
     })
-}
+};
 
 //Equals Button is Pressed & Operation is Performed
 const pressEqualsButton = () => {
