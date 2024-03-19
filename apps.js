@@ -18,6 +18,7 @@ const divide = (a, b) => {
 //Variables for Calculator Operation
 let firstNumber = "";
 let operator = "";
+let nextOperator = "";
 let secondNumber = "";
 const operatorButtons = document.querySelectorAll(".op-button");
 const equalsButton = document.getElementById("=");
@@ -70,7 +71,7 @@ const setOperator = () => {
     operatorButtons.forEach(op => {
         op.addEventListener("click", (e) => {
             displayScreen.innerText += op.innerText;
-            if (e.target.innerText !==  "="){
+            if (e.target.innerText !==  "=" && operator == ""){
                 operator = e.target.innerText;
                 console.log(`Operator is: ${operator}`);
 
@@ -79,12 +80,15 @@ const setOperator = () => {
                pressEqualsButton();
             }
 
-            if (secondNumber !== "") {
+
+            if (firstNumber!== "" && secondNumber !== "" && operator !== "") {
                 let result = operate(firstNumber, secondNumber, operator);
                 firstNumber = parseFloat(result);
                 secondNumber = "";
-                displayScreen.innerText = firstNumber + op.innerText;
-
+                operator = "";
+                displayScreen.innerText = firstNumber + " " + op.innerText;
+            
+  
                 console.log(`New First Number is: ${firstNumber}`);
                 console.log(`New Second Number is : ${secondNumber}`);
             }
