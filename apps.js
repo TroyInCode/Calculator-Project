@@ -96,20 +96,23 @@ const setOperator = () => {
 
 //Equals Button is Pressed & Operation is Performed
 const pressEqualsButton = () => {
+    equalsButton.forEach(button => {button.addEventListener("click", (e) => {
     let result = operate(firstNumber, secondNumber, operator);
     displayScreen.innerText = result;
     console.log(result);
-    
+
     //Reset firstNumber to the result for further calculations
     firstNumber = parseFloat(result);
     operator = "";
     secondNumber = "";
-    console.log(`New First Number is: ${firstNumber}`);
+    console.log(`New First Number is : ${firstNumber}`);}
+    )})
 };
 
 
+
 //Clear Display when "Clear" is Clicked"
-const clearNumbers = () => {
+const clearNumbers = () => { 
 clearButton.addEventListener("click", () => {
     displayScreen.innerHTML = "";
     firstNumber = "";
@@ -118,7 +121,15 @@ clearButton.addEventListener("click", () => {
 });
 };
 
+let result = operate(firstNumber, secondNumber, operator);
+displayScreen.innerText = result;
+console.log(result);
 
+//Reset firstNumber to the result for further calculations
+firstNumber = parseFloat(result);
+operator = "";
+secondNumber = "";
+console.log(`New First Number is: ${firstNumber}`);
 
 
 
