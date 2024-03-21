@@ -18,7 +18,6 @@ const divide = (a, b) => {
 //Variables for Calculator Operation
 let firstNumber = "";
 let operator = "";
-let nextOperator = "";
 let secondNumber = "";
 const operatorButtons = document.querySelectorAll(".op-button");
 const equalsButton = document.getElementById("=");
@@ -41,7 +40,7 @@ const operate = (firstNumber, secondNumber, operator) => {
         case '/':
             return divide(parseFloat(firstNumber), parseFloat(secondNumber));
         default:
-            return "Invalid operator";
+            return "Invalid Operator";
     };
 };
 
