@@ -95,7 +95,7 @@ const setOperator = () => {
 
 //Equals Button is Pressed & Operation is Performed
 const pressEqualsButton = () => {
-    equalsButton.forEach(button => {button.addEventListener("click", () => {
+    equalsButton.addEventListener("click", e => {
     let result = operate(firstNumber, secondNumber, operator);
     displayScreen.innerText = result;
     console.log(result);
@@ -105,8 +105,8 @@ const pressEqualsButton = () => {
     operator = "";
     secondNumber = "";
     console.log(`New First Number is : ${firstNumber}`);}
-    )})
-};
+    )}
+;
 
 
 
@@ -128,3 +128,4 @@ clearButton.addEventListener("click", () => {
 displayNumbers();
 clearNumbers();
 setOperator();
+pressEqualsButton();
