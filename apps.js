@@ -78,7 +78,7 @@ const setOperator = () => {
 
             if (firstNumber !== "" && secondNumber !== "" && operator !== "") {
                 let result = operate(firstNumber, secondNumber, operator);
-                firstNumber = parseFloat(result); 
+                firstNumber = parseFloat(result.toFixed(2)); 
                 operator = op.innerText;
                 secondNumber = "";
                 displayScreen.innerText = `${firstNumber}${operator}${secondNumber}`;
@@ -97,11 +97,11 @@ const setOperator = () => {
 const pressEqualsButton = () => {
     equalsButton.addEventListener("click", e => {
     let result = operate(firstNumber, secondNumber, operator);
-    displayScreen.innerText = result;
+    displayScreen.innerText = result.toFixed(2);
     console.log(result);
 
     //Reset firstNumber to the result for further calculations
-    firstNumber = parseFloat(result);
+    firstNumber = parseFloat(result.toFixed(2));
     operator = "";
     secondNumber = "";
     console.log(`New First Number is : ${firstNumber}`);}
