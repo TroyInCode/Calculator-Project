@@ -69,7 +69,7 @@ const displayNumbers = () => {
 const setOperator = () => {
     operatorButtons.forEach(op => {
         op.addEventListener("click", (e) => {
-            displayScreen.innerText += op.innerText;
+            displayScreen.innerText = `${firstNumber}${op.innerText}`;
             if (e.target.innerText !==  "=" && firstNumber !== "" && secondNumber == "" && operator == ""){
                 operator = e.target.innerText;
                 console.log(`Operator is: ${operator}`);
