@@ -39,8 +39,6 @@ body {
     flex-direction: row;
     width: 100%;
     height: 100%;
-    margin: 10px 10px;
-    gap: 10px;
 }
 
 .calc-keys button {
@@ -48,9 +46,8 @@ body {
 }
 
 button {
-    border-radius: 50px;
     cursor: pointer;
-    border: none;
+    border: 1px solid black;
     background-color: hsl(0, 0%, 30%);
     color: white;
     font-size: 3rem;
