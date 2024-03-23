@@ -40,9 +40,11 @@ const operate = (firstNumber, secondNumber, operator) => {
         case '/':
             return divide(parseFloat(firstNumber), parseFloat(secondNumber));
         default:
-            return "Invalid Operator";
+            return "Invalid Operator";      
     };
+
 };
+
 
 //Display Numbers when Clicked
 
@@ -85,6 +87,10 @@ const setOperator = () => {
                 result = parseFloat(result).toFixed(2);
                 };
 
+                if (operator == "/" && firstNumber == "0" || secondNumber == "0"){
+                    result = "No Division By Zero";
+                }
+
                 //Reset firstNumber to result for further calculations
                 firstNumber = result; 
                 operator = op.innerText;
@@ -105,13 +111,19 @@ const pressEqualsButton = () => {
     equalsButton.addEventListener("click", e => {
     let result = operate(firstNumber, secondNumber, operator);
     result = result.toString();
-    displayScreen.innerText = parseFloat(result).toFixed(2);
-    console.log(result);
 
     //If result has a decimal, round to the nearest hundreth
     if (result.includes(".")){
         result = parseFloat(result).toFixed(2);
+    };
+
+    if (operator == "/" && firstNumber == "0" || secondNumber == "0"){
+        result = "No Division By Zero";
     }
+
+    displayScreen.innerText = result;
+    console.log(result);
+
 
     //Reset firstNumber to the result for further calculations
     firstNumber = result;
