@@ -78,12 +78,19 @@ const setOperator = () => {
 
             if (firstNumber !== "" && secondNumber !== "" && operator !== "") {
                 let result = operate(firstNumber, secondNumber, operator);
-                firstNumber = parseFloat(result.toFixed(2)); 
+                result = result.toString();
+
+                //If result has a decimal, round to the nearest hundreth
+                if (result.includes(".")){
+                result = parseFloat(result).toFixed(2);
+                };
+
+                //Reset firstNumber to result for further calculations
+                firstNumber = result; 
                 operator = op.innerText;
                 secondNumber = "";
                 displayScreen.innerText = `${firstNumber}${operator}${secondNumber}`;
                 
-             
   
                 console.log(`New First Number is: ${firstNumber}`);
                 console.log(`New Operator: ${operator}`);
@@ -97,16 +104,24 @@ const setOperator = () => {
 const pressEqualsButton = () => {
     equalsButton.addEventListener("click", e => {
     let result = operate(firstNumber, secondNumber, operator);
-    displayScreen.innerText = result.toFixed(2);
+    result = result.toString();
+    displayScreen.innerText = parseFloat(result).toFixed(2);
     console.log(result);
 
+    //If result has a decimal, round to the nearest hundreth
+    if (result.includes(".")){
+        result = parseFloat(result).toFixed(2);
+    }
+
     //Reset firstNumber to the result for further calculations
-    firstNumber = parseFloat(result.toFixed(2));
+    firstNumber = result;
     operator = "";
     secondNumber = "";
-    console.log(`New First Number is : ${firstNumber}`);}
-    )}
-;
+    console.log(`New First Number is : ${firstNumber}`);
+
+    
+}
+    )};
 
 
 
